@@ -1,4 +1,3 @@
-console.log('hello world!')
 
 let ting = new Audio("ting.mp3");
 let music = new Audio("music.mp3");
@@ -24,9 +23,7 @@ function playgameover() {
 function changeTurn() {
     return turn === "X" ? "O" : "X";
 }
-
 const checkWin = () => {
-
     let boxtext = document.getElementsByClassName('boxtext');
     // all the winning combinations
     let wins = [
@@ -41,12 +38,22 @@ const checkWin = () => {
     ];
     // implementation of the winning logic
     wins.forEach(e => {
-        if ((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && (boxtext[e[2]].innerText === boxtext[e[1]].innerText) && (boxtext[e[0]].innerText !== "")) {
-            document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won"
-            isgameover = true
+        if (
+            (boxtext[e[0]].innerText === boxtext[e[1]].innerText) &&
+            (boxtext[e[2]].innerText === boxtext[e[1]].innerText) &&
+            (boxtext[e[0]].innerText !== "")
+        ) {
+            // Set winning message
+            document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won";
+
+            // Update isgameover flag
+            isgameover = true;
+
+            // Run this line only when isgameover is true
+            document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = '200px';
         }
-    })
-}
+    });
+};
 
 
 let boxes = document.getElementsByClassName("box");

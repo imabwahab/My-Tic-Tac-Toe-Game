@@ -48,8 +48,11 @@ ul li {
     font-family: "Winky Sans", sans-serif;
     padding: 10px 34px;
 }
-.imgbox{
-    display: none;
+
+.imgbox img{
+    margin-top: 20px;
+    width: 0;
+    transition: width 1s ease-in-out;
 }
 
 .bl-0{
