@@ -26,7 +26,7 @@ function changeTurn() {
 
 // Play background music at the start
 music.loop = true; // Ensure music plays in a loop
-music.play();
+//music.play();
 
 const checkWin = () => {
     let boxtext = document.getElementsByClassName('boxtext');
@@ -82,4 +82,16 @@ Array.from(boxes).forEach(e => {
         }
     })
 
+})
+
+reset.addEventListener('click', ()=>{
+    let boxtexts = document.getElementsByClassName('boxtext');
+    Array.from(boxtexts).forEach(e => {
+        e.innerText = ""
+    })
+    // Run this line only when isgameover is true
+    document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = '0px';
+    isgameover = false
+    turn = "X"
+    document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
 })
