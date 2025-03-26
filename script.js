@@ -1,7 +1,7 @@
 
 let ting = new Audio("ting.mp3");
-let music = new Audio("music.mp3");
-let gameover = new Audio("gameover.mp3")
+let music = new Audio("music2.mp3");
+let gameover = new Audio("winner.mp3")
 
 let isgameover = false
 
@@ -23,6 +23,11 @@ function playgameover() {
 function changeTurn() {
     return turn === "X" ? "O" : "X";
 }
+
+// Play background music at the start
+music.loop = true; // Ensure music plays in a loop
+music.play();
+
 const checkWin = () => {
     let boxtext = document.getElementsByClassName('boxtext');
     // all the winning combinations
@@ -46,6 +51,11 @@ const checkWin = () => {
             // Set winning message
             document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won";
 
+            // Stop background music and play gameover music
+            music.pause();
+            music.currentTime = 0; // Reset background music
+            gameover.play();
+
             // Update isgameover flag
             isgameover = true;
 
@@ -54,6 +64,7 @@ const checkWin = () => {
         }
     });
 };
+
 
 
 let boxes = document.getElementsByClassName("box");
